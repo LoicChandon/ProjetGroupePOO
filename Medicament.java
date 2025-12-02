@@ -26,7 +26,10 @@ public class Medicament {
     public float getDosePrescrite() {
         return dosePrescrite;
     }
-
     
+    public void evolution(){
+    }
+
+
 
 }
