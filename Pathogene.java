@@ -1,6 +1,6 @@
 import java.util.Map;
 
-public class Pathogene implements IEvoluant {
+public abstract class Pathogene implements IEvoluant {
 
     protected String nom;
     protected float chargePathogene;
@@ -9,9 +9,6 @@ public class Pathogene implements IEvoluant {
     protected float sensibliteMedicament;
     protected Map<String, Float> resistancesMedicament;
     @Override
-    public void evoluer() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'evoluer'");
-    }
+    public abstract void evoluer();
 
 }
