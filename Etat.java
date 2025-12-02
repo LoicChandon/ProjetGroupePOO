@@ -16,4 +16,5 @@ public class Etat {
     public void setDosesMedicament(Map<String, Float> dosesMedicament) {
         this.dosesMedicament = dosesMedicament;
     }
+    
 }
