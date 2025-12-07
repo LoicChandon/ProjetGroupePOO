@@ -10,9 +10,10 @@ public class Patient {
     protected String numeroSecuriteSociale;
     protected ArrayList<Pathogene> pathogenes;
     protected ArrayList<Medicament> traitement;
+    protected ReponseImmunitaire reponseImmunitaire;
 
     public Patient(String nom, String prenom, String dateDeNaissance, String numeroSecuriteSociale,
-            ArrayList<Pathogene> pathogenes, ArrayList<Medicament> traitement) {
+            ArrayList<Pathogene> pathogenes, ArrayList<Medicament> traitement, ReponseImmunitaire reponseImmunitaire) {
         this.idPatient = compteurId++;
         this.nom = nom;
         this.prenom = prenom;
@@ -20,6 +21,7 @@ public class Patient {
         this.numeroSecuriteSociale = numeroSecuriteSociale;
         this.pathogenes = pathogenes;
         this.traitement = traitement;
+        this.reponseImmunitaire = reponseImmunitaire;
     }
 
     public Patient(String nom, String prenom, String dateDeNaissance, String numeroSecuriteSociale) {
@@ -30,5 +32,15 @@ public class Patient {
         this.numeroSecuriteSociale = numeroSecuriteSociale;
     }
 
-    
+    public ArrayList<Pathogene> getPathogenes() {
+        return pathogenes;
+    }
+
+    public ArrayList<Medicament> getTraitement() {
+        return traitement;
+    }
+
+    public ReponseImmunitaire getReponseImmunitaire() {
+        return reponseImmunitaire;
+    }
 }
