@@ -1,3 +1,3 @@
 public interface IResistant {
-    float calculResistanceDynamique(float dosePresente, float tauxImpactMedicament);
+    float calculResistanceDynamique(Medicament medicament, float dosePresente, float tauxImpactMedicament);
 }

@@ -4,10 +4,8 @@ import java.util.Map;
 
 public class PathogeneClassique extends Pathogene {
 
-    protected Patient patient;
-
-    public PathogeneClassique(float chargePathogene, String nom, Map<String, Float> resistancesMedicament, float sensibiliteSystemeImmunitaire, float sensibliteMedicament, float tauxReplication) {
-        super(chargePathogene, nom, resistancesMedicament, sensibiliteSystemeImmunitaire, sensibliteMedicament, tauxReplication);
+    public PathogeneClassique(float chargePathogene, String nom, Map<String, Float> resistancesMedicament, float sensibiliteSystemeImmunitaire, float sensibiliteMedicament, float tauxReplication, Patient patient) {
+        super(chargePathogene, nom, resistancesMedicament, sensibiliteSystemeImmunitaire, sensibiliteMedicament, tauxReplication, patient);
     }
 
     @Override
@@ -15,9 +13,9 @@ public class PathogeneClassique extends Pathogene {
         // Formule : Lt+1 = max(0,Lt +τcLt −αiIt − Somme(m∈M) Avec : αmDm,t(1 −Rm)) voir pdf
         
         float Lt = chargePathogene;
-        float terme_replication = tauxReplication * Lt;
+        float Tc= tauxReplication * Lt;
         
-        // Activité du système immunitaire It
+        // Activité du système immunitaire au pas de temps t. (It)
         float It = 0.0f;
         if (patient != null) {
             It = patient.getReponseImmunitaire().getActivite(); // quand getActivite() existe dans reponse immu
@@ -37,7 +35,7 @@ public class PathogeneClassique extends Pathogene {
             }
         }
         
-        float LtPlus1 = Lt + terme_replication - terme_immunitaire - somme_medicaments;
+        float LtPlus1 = Lt + Tc - terme_immunitaire - somme_medicaments;
         chargePathogene = Math.max(0.0f, LtPlus1); // la charge est >= 0
     }
 
