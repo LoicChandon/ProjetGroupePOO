@@ -1,7 +1,5 @@
-/**
- * Classe de test pour vérifier la conformité avec les équations de l'énoncé
- */
-public class TestConformite {
+
+public class TestImmun {
     public static void main(String[] args) {
         
         // Test avec les paramètres de l'exemple 3.1
@@ -24,7 +22,7 @@ public class TestConformite {
         float attenduAdulte = Math.max(0, 0 + beta*charge - f*0); // = 4.0
         System.out.println("  Activité attendue: " + attenduAdulte);
         System.out.println("  Activité obtenue: " + adulte.getActivite());
-        System.out.println("  ✓ Correct: " + (Math.abs(adulte.getActivite() - attenduAdulte) < 0.001));
+        System.out.println("   Correct: " + (Math.abs(adulte.getActivite() - attenduAdulte) < 0.001));
         
         // Test 2: Jeune
         System.out.println("\n2. TEST JEUNE (équation 5):");
@@ -35,7 +33,7 @@ public class TestConformite {
         float attenduJeune = Math.max(0, 5 + beta*(float)Math.sqrt(15) - f*5); // ≈ 6.049
         System.out.println("  Activité attendue: " + attenduJeune);
         System.out.println("  Activité obtenue: " + jeune.getActivite());
-        System.out.println("  ✓ Correct: " + (Math.abs(jeune.getActivite() - attenduJeune) < 0.01));
+        System.out.println("   Correct: " + (Math.abs(jeune.getActivite() - attenduJeune) < 0.01));
         
         // Test 3: Âgé
         System.out.println("\n3. TEST ÂGÉ (équation 6):");
@@ -46,7 +44,7 @@ public class TestConformite {
         float attenduAgee = Math.max(0, 5 + beta*15 - f*5*5); // = 8.5
         System.out.println("  Activité attendue: " + attenduAgee);
         System.out.println("  Activité obtenue: " + agee.getActivite());
-        System.out.println("  ✓ Correct: " + (Math.abs(agee.getActivite() - attenduAgee) < 0.001));
+        System.out.println("  Correct: " + (Math.abs(agee.getActivite() - attenduAgee) < 0.001));
         
     }
 }
