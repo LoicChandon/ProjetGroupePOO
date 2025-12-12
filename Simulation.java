@@ -112,7 +112,7 @@ public class Simulation {
         if (patient.getTraitement() != null) {
             for (Medicament med : patient.getTraitement()) {
                 //concentrationsActuelles.put(med.getNom(), med.getConcentrationActuelle()); // qu'est-ce ?
-                concentrationsActuelles.put(med.getNom(), med.getDoseAdministree());
+                concentrationsActuelles.put(med.getNom(), med.getDosePresente());
             }
         }
         

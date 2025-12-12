@@ -65,15 +65,19 @@ public class Patient {
         
         for (Pathogene p : pathogenes) {
             p.evoluer();
-            chargeViraleTotale += p.chargePathogene; // Accès direct si protected, sinon utiliser getChargePathogene()
+            chargeViraleTotale += p.getChargePathogene(); // Accès direct si protected, sinon utiliser getChargePathogene()
         }
 
         MiseAJourImmunite(chargeViraleTotale);
 
-        boolean priseMedicament = (numeroCycle % 3 == 0); 
+        // boolean priseMedicament = (numeroCycle % 3 == 0); // ??? On fait pas forcément tous les 3 cycles, ca c'est un exemple je crois
 
         for (Medicament m : traitement) {
-            m.evoluer(priseMedicament);
+            float dosePrise = 0.0f;
+            if (numeroCycle % 3 == 0) { // Meme commentaire qu'au dessus
+                dosePrise = m.getDoseAdministree();
+            }
+            m.evoluer(dosePrise);
         }
 
         System.out.println("Cycle " + numeroCycle + " | Charge Totale: " + chargeViraleTotale);

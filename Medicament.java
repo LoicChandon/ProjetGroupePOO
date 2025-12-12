@@ -2,14 +2,14 @@ public class Medicament implements IEvoluant {
     private String nom;
     private float sensibilite;
     private float tauxDisparition;
-    private float dosePrescrite;
+    private float doseAdministree;
     private float dosePresente;
 
-    public Medicament(String nom, float sensibilté, float tauxDisparition, float dosePrescrite) {
+    public Medicament(String nom, float sensibilite, float tauxDisparition, float doseAdministree) {
         this.nom = nom;
         this.sensibilite = sensibilite;
         this.tauxDisparition = tauxDisparition;
-        this.dosePrescrite = dosePrescrite;
+        this.doseAdministree = doseAdministree;
         this.dosePresente = 0.0f;
     }
 
@@ -33,18 +33,14 @@ public class Medicament implements IEvoluant {
         return dosePresente;
     }
 
-    /**
-     * Fait évoluer la concentration du médicament.
-     * @param administrationEffectuee true si le patient prend son médicament maintenant.
-     */
-    public void evoluer(boolean administrationEffectuee) {
-        float apport = administrationEffectuee ? dosePrescrite : 0.0f;
-        this.dosePresente = (this.tauxDisparition * this.dosePresente) + apport;
-    }
+
+    public void evoluer(float apport) {
+        dosePresente = dosePresente * (1 - tauxDisparition) + apport;
+    } 
 
     // Surcharge obligatoire pour l'interface IEvoluant
     @Override
     public void evoluer() {
-        evoluer(false);
+        evoluer(0.0f);
     }   
 }
