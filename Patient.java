@@ -79,6 +79,6 @@ public class Patient {
         if (this.reponseImmunitaire != null) {
             this.reponseImmunitaire.evoluer(chargeTotale);
         }
+    }
 }
-
 
