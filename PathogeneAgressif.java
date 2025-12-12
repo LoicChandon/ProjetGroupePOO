@@ -25,7 +25,7 @@ public class PathogeneAgressif extends Pathogene {
         float somme_medicaments = 0.0f;
         if (patient != null && patient.getTraitement() != null) {
             for (Medicament med : patient.getTraitement()) {
-                float Dmt = med.getDosePrescrite(); 
+                float Dmt = med.getDoseAdministree(); 
                 float Rm = 0.0f;
                 if (resistancesMedicament != null && resistancesMedicament.containsKey(med.getNom())) {
                     Rm = resistancesMedicament.get(med.getNom());

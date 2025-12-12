@@ -2,13 +2,13 @@ public class Medicament {
     private String nom;
     private float sensibilite;
     private float tauxDisparition;
-    private float dosePrescrite;
+    private float doseAdministree;
 
     public Medicament(String nom, float sensibilté, float tauxDisparition, float dosePrescrite) {
         this.nom = nom;
         this.sensibilite = sensibilite;
         this.tauxDisparition = tauxDisparition;
-        this.dosePrescrite = dosePrescrite;
+        this.doseAdministree = doseAdministree;
     }
 
     public String getNom() {
@@ -23,11 +23,14 @@ public class Medicament {
         return tauxDisparition;
     }
 
-    public float getDosePrescrite() {
-        return dosePrescrite;
+    public float getDoseAdministree() {
+        return doseAdministree;
     }
     
-    public void evolution(){
+    public void evoluer(){
+    }
+
+    public void evoluer(float dosePrise){ //???
     }
 
 

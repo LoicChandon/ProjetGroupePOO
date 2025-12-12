@@ -23,4 +23,29 @@ public abstract class Pathogene implements IEvoluant {
     @Override
     public abstract void evoluer();
 
+    public String getNom() {
+        return nom;
+    }
+    
+    public float getChargePathogene() {
+        return chargePathogene;
+    }
+
+    public float getSensibiliteSystemeImmunitaire() {
+        return sensibiliteSystemeImmunitaire;
+    }
+
+    public float getSensibiliteMedicament() {
+        return sensibiliteMedicament;
+    }
+
+    public Map<String, Float> getResistancesMedicament() {
+        return resistancesMedicament;
+    }
+
+    public Patient getPatient() {
+        return patient;
+    }
+
+
 }

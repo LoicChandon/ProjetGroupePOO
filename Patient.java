@@ -43,4 +43,8 @@ public class Patient {
     public ReponseImmunitaire getReponseImmunitaire() {
         return reponseImmunitaire;
     }
+
+    public int getIdPatient() {
+        return idPatient;
+    }
 }
