@@ -8,8 +8,8 @@ public class Patient {
     protected String prenom;
     protected String dateDeNaissance;
     protected String numeroSecuriteSociale;
-    protected ArrayList<Pathogene> pathogenes;
-    protected ArrayList<Medicament> traitement;
+    protected ArrayList<Pathogene> pathogenes = new ArrayList<>();
+    protected ArrayList<Medicament> traitement = new ArrayList<>();
     protected ReponseImmunitaire reponseImmunitaire;
 
     public Patient(String nom, String prenom, String dateDeNaissance, String numeroSecuriteSociale,
@@ -19,8 +19,8 @@ public class Patient {
         this.prenom = prenom;
         this.dateDeNaissance = dateDeNaissance;
         this.numeroSecuriteSociale = numeroSecuriteSociale;
-        this.pathogenes = pathogenes;
-        this.traitement = traitement;
+        if (pathogenes != null) this.pathogenes = pathogenes;
+        if (traitement != null) this.traitement = traitement;
         this.reponseImmunitaire = reponseImmunitaire;
     }
 
@@ -47,4 +47,42 @@ public class Patient {
     public int getIdPatient() {
         return idPatient;
     }
+
+    public void ajouterPathogene(Pathogene p) {
+        this.pathogenes.add(p);
+    }
+
+    public void ajouterTraitement(Medicament m) {
+        this.traitement.add(m);
+    }
+
+    public void setReponseImmunitaire(ReponseImmunitaire reponseImmunitaire) {
+        this.reponseImmunitaire = reponseImmunitaire;
+    }
+
+    public void simulerCycle(int numeroCycle) {
+        float chargeViraleTotale = 0.0f;
+        
+        for (Pathogene p : pathogenes) {
+            p.evoluer();
+            chargeViraleTotale += p.chargePathogene; // Accès direct si protected, sinon utiliser getChargePathogene()
+        }
+
+        MiseAJourImmunite(chargeViraleTotale);
+
+        boolean priseMedicament = (numeroCycle % 3 == 0); 
+
+        for (Medicament m : traitement) {
+            m.evoluer(priseMedicament);
+        }
+
+        System.out.println("Cycle " + numeroCycle + " | Charge Totale: " + chargeViraleTotale);
+    }
+    
+    public void MiseAJourImmunite(float chargeTotale) {
+        if (this.reponseImmunitaire != null) {
+            this.reponseImmunitaire.evoluer(chargeTotale);
+        }
+    }
 }
+
