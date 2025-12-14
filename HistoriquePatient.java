@@ -1,14 +1,14 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class HistoriquePatient {
-
     private int idPatientActuel;
     private List<Integer> numeroCycles;
-    private List<Map<String, Float>> historiqueChargesPathogenes; // L_t
-    private List<Float> historiqueActiviteImmunitaire;            // I_t
-    private List<Map<String, Float>> historiqueConcentrationsMedicaments; // D_m,t
+    private List<Map<String, Float>> historiqueChargesPathogenes;
+    private List<Float> historiqueActiviteImmunitaire;
+    private List<Map<String, Float>> historiqueConcentrationsMedicaments;
 
     public HistoriquePatient(int idPatient) {
         this.idPatientActuel = idPatient;
@@ -18,31 +18,25 @@ public class HistoriquePatient {
         this.historiqueConcentrationsMedicaments = new ArrayList<>();
     }
 
-    /**
-     * Ajoute l'état du patient pour un cycle donné.
-     */
     public void ajouterEtatCycle(int cycle, Map<String, Float> charges, float activite, Map<String, Float> concentrations) {
         this.numeroCycles.add(cycle);
-        this.historiqueChargesPathogenes.add(charges);
+        this.historiqueChargesPathogenes.add(new HashMap<>(charges));
         this.historiqueActiviteImmunitaire.add(activite);
-        this.historiqueConcentrationsMedicaments.add(concentrations);
+        this.historiqueConcentrationsMedicaments.add(new HashMap<>(concentrations));
     }
 
-    // Getters pour ResultatSimulation ou l'affichage
     public int getIdPatientActuel() {
         return idPatientActuel;
     }
 
     public List<Map<String, Float>> getHistoriqueChargesPathogenes() {
-        return historiqueChargesPathogenes;
+        return new ArrayList<>(historiqueChargesPathogenes);
     }
     
     public List<Float> getHistoriqueActiviteImmunitaire() {
-        return historiqueActiviteImmunitaire;
+        return new ArrayList<>(historiqueActiviteImmunitaire);
     }
     
-    // ... autres getters si besoin ...
-
     public void afficherHistorique() {
         System.out.println("--- Historique pour le Patient ID: " + idPatientActuel + " ---");
         for (int i = 0; i < numeroCycles.size(); i++) {
