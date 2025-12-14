@@ -5,6 +5,9 @@ public class PatientJeune extends Patient {
     
     @Override
     protected void mettreAJourImmunite(float chargeTotale) {
-        mettreAJourImmuniteJeune(chargeTotale);
+        float sqrtCharge = (chargeTotale >= 0) ? (float)Math.sqrt(chargeTotale) : 0;
+        float nouvelleActivite = activiteImmunitaire + (reactivite * sqrtCharge) 
+                               - (coefficientFatigue * activiteImmunitaire);
+        activiteImmunitaire = Math.max(0, nouvelleActivite);
     }
 }

@@ -38,7 +38,7 @@ public abstract class Patient implements IEvoluant {
     public void executerCycle() {
         // Mise à jour des concentrations médicamenteuses
         for (Medicament med : traitement) {
-            med.evoluer(0.0f); // Évolution sans nouvelle dose
+            med.evoluer(med.getDoseAdministree()); // Évolution sans nouvelle dose
             dosesMedicaments.put(med, med.getDosePresente());
         }
         
@@ -58,24 +58,6 @@ public abstract class Patient implements IEvoluant {
     
     protected abstract void mettreAJourImmunite(float chargeTotale);
     
-    protected void mettreAJourImmuniteJeune(float charge) {
-        float sqrtCharge = (charge >= 0) ? (float)Math.sqrt(charge) : 0;
-        float nouvelleActivite = activiteImmunitaire + (reactivite * sqrtCharge) 
-                               - (coefficientFatigue * activiteImmunitaire);
-        activiteImmunitaire = Math.max(0, nouvelleActivite);
-    }
-    
-    protected void mettreAJourImmuniteAdulte(float charge) {
-        float nouvelleActivite = activiteImmunitaire + (reactivite * charge) 
-                               - (coefficientFatigue * activiteImmunitaire);
-        activiteImmunitaire = Math.max(0, nouvelleActivite);
-    }
-    
-    protected void mettreAJourImmuniteAgee(float charge) {
-        float nouvelleActivite = activiteImmunitaire + (reactivite * charge) 
-                               - (coefficientFatigue * activiteImmunitaire * activiteImmunitaire);
-        activiteImmunitaire = Math.max(0, nouvelleActivite);
-    }
     
     public float calculerChargeTotale() {
         float total = 0.0f;

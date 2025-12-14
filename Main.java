@@ -8,17 +8,17 @@ public class Main {
         System.out.println("=== TEST 1 : Exemple de l'énoncé ===");
         testExempleEnonce();
         
-        // ===== TEST 2 : Patient jeune avec pathogène agressif =====
-        System.out.println("\n\n=== TEST 2 : Patient jeune avec pathogène agressif ===");
-        testPatientJeuneAgressif();
+        // // ===== TEST 2 : Patient jeune avec pathogène agressif =====
+        // System.out.println("\n\n=== TEST 2 : Patient jeune avec pathogène agressif ===");
+        // testPatientJeuneAgressif();
         
-        // ===== TEST 3 : Pathogène avec résistance dynamique =====
-        System.out.println("\n\n=== TEST 3 : Pathogène avec résistance dynamique ===");
-        testResistanceDynamique();
+        // // ===== TEST 3 : Pathogène avec résistance dynamique =====
+        // System.out.println("\n\n=== TEST 3 : Pathogène avec résistance dynamique ===");
+        // testResistanceDynamique();
         
-        // ===== TEST 4 : Simulation avec plusieurs patients =====
-        System.out.println("\n\n=== TEST 4 : Simulation avec plusieurs patients ===");
-        testSimulationMultiple();
+        // // ===== TEST 4 : Simulation avec plusieurs patients =====
+        // System.out.println("\n\n=== TEST 4 : Simulation avec plusieurs patients ===");
+        // testSimulationMultiple();
     }
     
     private static void testExempleEnonce() {
@@ -57,10 +57,12 @@ public class Main {
             
             patient.executerCycle();
             
-            // Afficher tous les 5 cycles
-            if (cycle % 5 == 0 || cycle == 1 || cycle == 20) {
-                patient.afficherEtat(cycle);
-            }
+            patient.afficherEtat(cycle);
+
+            // // Afficher tous les 5 cycles
+            // if (cycle % 5 == 0 || cycle == 1 || cycle == 20) {
+            //     patient.afficherEtat(cycle);
+            // }
         }
     }
     
